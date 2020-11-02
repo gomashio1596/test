@@ -238,7 +238,7 @@ class WebsocketTransport:
             connector_owner=self.ws_connector is None,
         )
         self.connection = con = await self.session.ws_connect(
-            *args, ssl=ssl.SSLContext(ssl.PROTOCOL_TLSv1), **kwargs
+            *args, verify_ssl=False, **kwargs
         )
 
         self.loop.create_task(self.reader())
